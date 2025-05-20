@@ -12,8 +12,12 @@ const app = express();
 const PORT = process.env.PORT || 5002;
 const __dirname = path.resolve();
 
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? ['https://mern-advanced-auth-tw67.onrender.com/']
+  : ['http://localhost:5173'];
+
 app.use(cors({
-  origin: "*",
+  origin: allowedOrigins,
   credentials: true,
 }));
 
